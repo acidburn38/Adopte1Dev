@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Adopte1Dev.DAL\Adopte1Dev.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
