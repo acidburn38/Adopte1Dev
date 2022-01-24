@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Adopte1Dev.DAL.Entities;
+using System;
+using System.Data;
 
 namespace Adopte1Dev.DAL
 {
@@ -14,7 +16,7 @@ namespace Adopte1Dev.DAL
                 DevFirstName = (string)record[nameof(Developer.DevFirstName)],
                 DevBirthDate = (DateTime)record[nameof(Developer.DevBirthDate)],
                 DevPicture = (string)record[nameof(Developer.DevPicture)],
-                DevHousCost = (int)record[nameof(Developer.DevHousCost)],
+                DevHourCost = (int)record[nameof(Developer.DevHourCost)],
                 DevDayCost = (int)record[nameof(Developer.DevDayCost)],
                 DevMonthCost = (int)record[nameof(Developer.DevMonthCost)],
                 DevMail = (string)record[nameof(Developer.DevMail)],

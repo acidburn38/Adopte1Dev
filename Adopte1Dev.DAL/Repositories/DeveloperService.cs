@@ -23,7 +23,17 @@ namespace Adopte1Dev.DAL.Repositories
 
         public IEnumerable<Developer> Get()
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(_connString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT [idDev],[DevName],[DevFirstName[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost],[DevMonthCost],[DevMail],[DevCategPrincipal]
+                    FROM [dbo].[Developer]";
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read()) yield return Mapper.ToDeveloper(reader);
+                }
+            }
         }
 
         public int Insert(Developer entity)
@@ -32,8 +42,10 @@ namespace Adopte1Dev.DAL.Repositories
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandText = "SP_Developer_Insert";
+                    command.CommandText = @"INSERT INTO [dbo].[Developer] 
+            ([DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost],[DevMonthCost],[DevMail][DevCategPrincipal])
+            VALUES
+            (@DevName, @DevFirstName, @DevBirthDate, @DevPicture, @DevHourCost, @DevDayCost, @DevMonthCost, @DevMail, @DevCategPrincipal)";
                     //Parameters...
                     SqlParameter p_DevName = new SqlParameter("DevName", entity.DevName);
                     command.Parameters.Add(p_DevName);
@@ -49,7 +61,7 @@ namespace Adopte1Dev.DAL.Repositories
                     command.Parameters.Add(p_DevDayCost);
                     SqlParameter p_DevMonthCost = new SqlParameter("DevMonthCost", entity.DevMonthCost);
                     command.Parameters.Add(p_DevMonthCost);
-                    SqlParameter p_DevMail = new SqlParameter("DevMonthCost", entity.DevMail);
+                    SqlParameter p_DevMail = new SqlParameter("DevMail", entity.DevMail);
                     command.Parameters.Add(p_DevMail);
                     SqlParameter p_DevCategPrincipal = new SqlParameter("DevCategPrincipal", entity.DevCategPrincipal);
                     command.Parameters.Add(p_DevCategPrincipal);
