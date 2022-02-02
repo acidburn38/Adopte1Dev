@@ -20,5 +20,7 @@ namespace Adopte1Dev.ASP.Models
         public double DevMonthCost { get; set; }
         public string DevMail { get; set; }
         public int? DevCategPrincipal { get; set; }
+        public CategoriesDetails CatePrincipal { get; set; }
+        public string CategPrincipalName { get { return this.CatePrincipal?.CategLabel; } }
     }
 }

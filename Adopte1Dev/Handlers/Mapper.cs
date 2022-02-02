@@ -14,6 +14,7 @@ namespace Adopte1Dev.ASP.Handlers
             if (entity == null) return null;
             return new DeveloperListItem
             {
+                IdDev = entity.IdDev,
                 DevName = entity.DevName,
                 DevFirstName = entity.DevFirstName,
                 DevPicture = entity.DevPicture,
@@ -36,6 +37,16 @@ namespace Adopte1Dev.ASP.Handlers
                 DevDayCost = entity.DevDayCost,
                 DevMail = entity.DevMail,
                 DevCategPrincipal = entity.DevCategPrincipal,
+            };
+        }
+
+        public static CategoriesDetails ToDetails(this Categories entity)
+        {
+            if (entity == null) return null;
+            return new CategoriesDetails
+            {
+                IdCategory = entity.IdCategory,
+                CategLabel = entity.CategLabel,
             };
         }
 

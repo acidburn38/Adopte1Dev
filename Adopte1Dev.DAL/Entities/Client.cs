@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adopte1Dev.DAL.Entities
 {
-    class Client
+    public class Client
     {
         public int IdClient { get; set; }
 

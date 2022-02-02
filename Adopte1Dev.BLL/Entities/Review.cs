@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adopte1Dev.BLL.Entities
 {
-    class Review
+    public class Review
     {
         public int IdReview { get; set; }
 

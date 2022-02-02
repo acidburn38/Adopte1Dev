@@ -23,7 +23,8 @@ namespace Adopte1Dev.DAL.Repositories
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = @"SELECT [idDev],[DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost],[DevMonthCost],[DevMail],[DevCategPrincipal]
-                    FROM [dbo].[Developer]";
+                    FROM [dbo].[Developer]
+                    WHERE idDev = @id";
                     SqlParameter p_id = new SqlParameter() { ParameterName = "id", Value = id };
                     command.Parameters.Add(p_id);
                     connection.Open();

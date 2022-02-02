@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adopte1Dev.BLL.Entities
 {
-    class ClientEndorseDev
+    public class ClientEndorseDev
     {
         public int IdClient { get; set; }
 

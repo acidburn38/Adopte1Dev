@@ -13,9 +13,11 @@ namespace Adopte1Dev.ASP.Controllers
     public class DeveloperController : Controller
     {
         private readonly IDeveloperRepository<Developer> _developerService;
-        public DeveloperController(IDeveloperRepository<Developer> developerService)
+        private readonly ICategoriesRepository<Categories> _categoriesService;
+        public DeveloperController(IDeveloperRepository<Developer> developerService, ICategoriesRepository<Categories> categoriesService)
         {
             _developerService = developerService;
+            _categoriesService = categoriesService;
         }
         public IActionResult Index()
         {
@@ -26,6 +28,7 @@ namespace Adopte1Dev.ASP.Controllers
         public IActionResult Details(int id)
         {
             DeveloperDetails model = _developerService.Get(id).ToDetails();
+            model.CatePrincipal = (model.DevCategPrincipal is null)?null:_categoriesService.Get((int)model.DevCategPrincipal).ToDetails();
             return View(model);
         }
 

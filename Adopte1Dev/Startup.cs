@@ -29,6 +29,8 @@ namespace Adopte1Dev.ASP
 
             services.AddScoped<IDeveloperRepository<DAL.Entities.Developer>, DAL.Repositories.DeveloperService>();
             services.AddScoped<IDeveloperRepository<Developer>, DeveloperService>();
+            services.AddScoped<ICategoriesRepository<DAL.Entities.Categories>, DAL.Repositories.CategoriesService>();
+            services.AddScoped<ICategoriesRepository<Categories>, CategoriesServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

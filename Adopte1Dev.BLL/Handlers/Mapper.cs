@@ -46,5 +46,25 @@ namespace Adopte1Dev.BLL.Handlers
                 DevCategPrincipal = entity.DevCategPrincipal.ToString(),
             };
         }
+
+        public static B.Categories ToBLL(this D.Categories entity)
+        {
+            if (entity == null) return null;
+            return new B.Categories
+            {
+                IdCategory = entity.IdCategory,
+                CategLabel = entity.CategLabel,
+            };
+        }
+
+        public static D.Categories ToDAL(this B.Categories entity)
+        {
+            if (entity == null) return null;
+            return new D.Categories
+            {
+                IdCategory = entity.IdCategory,
+                CategLabel = entity.CategLabel,
+            };
+        }
     }
 }

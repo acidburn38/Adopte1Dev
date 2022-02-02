@@ -25,5 +25,15 @@ namespace Adopte1Dev.DAL
                 DevCategPrincipal = (record[nameof(Developer.DevCategPrincipal)]==DBNull.Value)?null:(string)record[nameof(Developer.DevCategPrincipal)]
             };
         }
+
+        public static Categories ToCategories(IDataRecord record)
+        {
+            if (record is null) return null;
+            return new Categories
+            {
+                IdCategory = (int)record[nameof(Categories.IdCategory)],
+                CategLabel = (string)record[nameof(Categories.CategLabel)]
+            };
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adopte1Dev.BLL.Entities
 {
-    class Categories
+    public class Categories
     {
         public int IdCategory { get; set; }
 

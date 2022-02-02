@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adopte1Dev.DAL.Entities
 {
-    class DevLang
+    public class DevLang
     {
         public int ItDav { get; set; }
 

@@ -16,5 +16,7 @@ namespace Adopte1Dev.ASP.Models
         public string DevPicture { get; set; }
         public double DevHourCost { get; set; }
         public int? DevCategPrincipal { get; set; }
+        public CategoriesDetails CatePrincipal { get; set; }
+        public string CategPrincipalName { get { return this.CatePrincipal?.CategLabel; } }
     }
 }
