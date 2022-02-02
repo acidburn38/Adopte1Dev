@@ -18,7 +18,20 @@ namespace Adopte1Dev.DAL.Repositories
 
         public Developer Get(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(_connString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT [idDev],[DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost],[DevMonthCost],[DevMail],[DevCategPrincipal]
+                    FROM [dbo].[Developer]";
+                    SqlParameter p_id = new SqlParameter() { ParameterName = "id", Value = id };
+                    command.Parameters.Add(p_id);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) return Mapper.ToDeveloper(reader);
+                    return null;
+                }
+            }
         }
 
         public IEnumerable<Developer> Get()
@@ -27,7 +40,7 @@ namespace Adopte1Dev.DAL.Repositories
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = @"SELECT [idDev],[DevName],[DevFirstName[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost],[DevMonthCost],[DevMail],[DevCategPrincipal]
+                    command.CommandText = @"SELECT [idDev],[DevName],[DevFirstName],[DevBirthDate],[DevPicture],[DevHourCost],[DevDayCost],[DevMonthCost],[DevMail],[DevCategPrincipal]
                     FROM [dbo].[Developer]";
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();

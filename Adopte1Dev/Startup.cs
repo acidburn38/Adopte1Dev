@@ -1,3 +1,6 @@
+using Adopte1Dev.BLL.Entities;
+using Adopte1Dev.BLL.Services;
+using Adopte1Dev.Common.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Adopte1Dev
+namespace Adopte1Dev.ASP
 {
     public class Startup
     {
@@ -23,6 +26,9 @@ namespace Adopte1Dev
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IDeveloperRepository<DAL.Entities.Developer>, DAL.Repositories.DeveloperService>();
+            services.AddScoped<IDeveloperRepository<Developer>, DeveloperService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

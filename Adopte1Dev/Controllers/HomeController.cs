@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Adopte1Dev.Controllers
+namespace Adopte1Dev.ASP.Controllers
 {
     public class HomeController : Controller
     {
@@ -20,7 +20,7 @@ namespace Adopte1Dev.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Developer");
         }
 
         public IActionResult Privacy()

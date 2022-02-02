@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Adopte1Dev.ASP.Models.DeveloperListItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des Dev</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DevPicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevHourCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevCategPrincipal)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <img src="./assets/@item.DevPicture" width="250" />
+            </td>
+            <td>
+                €@Html.DisplayFor(modelItem => item.DevHourCost)/Hours
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DevName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DevFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DevCategPrincipal)
+            </td>
+            <td>
+                i @Html.ActionLink("Details", "Details", new { id = item.IdDev }) |
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

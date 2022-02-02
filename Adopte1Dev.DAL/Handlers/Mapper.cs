@@ -15,14 +15,14 @@ namespace Adopte1Dev.DAL
                 DevName = (string)record[nameof(Developer.DevName)],
                 DevFirstName = (string)record[nameof(Developer.DevFirstName)],
                 DevBirthDate = (DateTime)record[nameof(Developer.DevBirthDate)],
-                DevPicture = (string)record[nameof(Developer.DevPicture)],
-                DevHourCost = (int)record[nameof(Developer.DevHourCost)],
-                DevDayCost = (int)record[nameof(Developer.DevDayCost)],
-                DevMonthCost = (int)record[nameof(Developer.DevMonthCost)],
+                //DevPicture = (string)record[nameof(Developer.DevPicture)],
+                DevPicture = (record[nameof(Developer.DevPicture)]==DBNull.Value)?null:(string)record[nameof(Developer.DevPicture)],
+                DevHourCost = (double)record[nameof(Developer.DevHourCost)],
+                DevDayCost = (double)record[nameof(Developer.DevDayCost)],
+                DevMonthCost = (double)record[nameof(Developer.DevMonthCost)],
                 DevMail = (string)record[nameof(Developer.DevMail)],
-                DevCategPrincipal = (string)record[nameof(Developer.DevCategPrincipal)],
-
-
+                //DevCategPrincipal = (string)record[nameof(Developer.DevCategPrincipal)],
+                DevCategPrincipal = (record[nameof(Developer.DevCategPrincipal)]==DBNull.Value)?null:(string)record[nameof(Developer.DevCategPrincipal)]
             };
         }
     }
