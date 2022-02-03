@@ -1,58 +1,76 @@
-﻿@model IEnumerable<Adopte1Dev.ASP.Models.DeveloperListItem>
+﻿@model Adopte1Dev.ASP.Models.DeveloperIndex
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@*<h1>Category</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DevPicture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DevName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DevFirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DevHourCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategPrincipalName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
-                <img width="250" src="~/assets/@Html.DisplayFor(modelItem => item.DevPicture)" />
-<td>
-                @Html.DisplayFor(modelItem => item.DevName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DevFirstName)
-            </td>
-            <td>
-               €@Html.DisplayFor(modelItem => item.DevHourCost) /Hour
-            </td>
-            <td>
-                @*@Html.DisplayFor(model => model.CategPrincipalName)*@
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdDev }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.CategLabel)
             </td>
         </tr>
-}
-    </tbody>
-</table>
+    }*@
+<h1>Category</h1>
+
+@Html.Partial("_FilterCategories", Model.Categories)
+
+<h1>Developer</h1>
+
+@Html.Partial("_DeveloperList", Model.Developer)
+
+@*<p>
+        <a asp-action="Create">Create New Dev</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DevPicture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DevName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DevFirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DevHourCost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategPrincipalName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img width="250" src="~/assets/@Html.DisplayFor(modelItem => item.DevPicture)" />
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DevName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DevFirstName)
+                    </td>
+                    <td>
+                        €@Html.DisplayFor(modelItem => item.DevHourCost) /Hour
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CategPrincipalName)
+                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.IdDev }) |
+                                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+*@

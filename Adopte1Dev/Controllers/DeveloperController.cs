@@ -21,8 +21,12 @@ namespace Adopte1Dev.ASP.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<DeveloperListItem> model = _developerService.Get().Select(c => c.ToListItem());
+            DeveloperIndex model = new DeveloperIndex();
+
+            model.Developer = _developerService.Get().Select(c => c.ToListItem());
+            model.Categories = _categoriesService.Get().Select(c => c.ToDetails());
             return View(model);
+
         }
 
         public IActionResult Details(int id)
